@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
-const avatarExample =
-  'https://avatars1.githubusercontent.com/u/31226035?s=460&u=651a3f3cfd0f899be47765dd849c470db13d8fb4&v=4';
+import { GithubFilled, InstagramOutlined, FacebookFilled, LinkedinFilled } from '@ant-design/icons';
 
 const ImageParentContainer = styled.div`
   width: 270px;
@@ -37,6 +35,60 @@ const Image = styled.img`
   border-radius: 50%;
 `;
 
+const DetailsWrapper = styled.div`
+  padding-left: 30px;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 400;
+    font-family: Poppins, sans-serif;
+    color: rgb(41, 41, 41);
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: rgb(41, 41, 41);
+    font-size: 15px;
+    line-height: 2;
+  }
+
+  }
+`;
+
+const SocialMediaWrapper = styled.div`
+  margin: 0px;
+  padding: 0px;
+  display: inline-flex;
+`;
+
+const GithubIcon = styled(GithubFilled)`
+  list-style: none;
+  position: relative;
+  margin-right: 20px;
+  font-size: 18px;
+`;
+
+const InstagramIcon = styled(InstagramOutlined)`
+  list-style: none;
+  position: relative;
+  margin-right: 20px;
+  font-size: 18px;
+`;
+
+const FacebookIcon = styled(FacebookFilled)`
+  list-style: none;
+  position: relative;
+  margin-right: 20px;
+  font-size: 18px;
+`;
+
+const LinkedinIcon = styled(LinkedinFilled)`
+  list-style: none;
+  position: relative;
+  margin-right: 20px;
+  font-size: 18px;
+`;
+
 interface InfoBannerProps {
   image: string;
 }
@@ -46,9 +98,24 @@ const InfoBanner = ({ image }: InfoBannerProps) => (
     <ImageParentContainer>
       <ImageWrapper>
         <BlockContent aria-hidden="true"></BlockContent>
-        <Image type="image/webp" src={image} alt="profile picture" />
+        <Image sizes="(max-width: 210px) 100vw, 210px" type="image/webp" src={image} alt="profile picture" />
       </ImageWrapper>
     </ImageParentContainer>
+    <DetailsWrapper>
+      <h1>
+        Hi! My name is <b>Vincent</b>
+      </h1>
+      <p>
+        Breakfast procuring no end happiness allowance assurance frank. Met simplicity nor difficulty unreserved who.
+        Entreaties mr conviction dissimilar me astonished estimating cultivated.
+      </p>
+      <SocialMediaWrapper>
+        <GithubIcon />
+        <LinkedinIcon />
+        <InstagramIcon />
+        <FacebookIcon />
+      </SocialMediaWrapper>
+    </DetailsWrapper>
   </>
 );
 
