@@ -1,6 +1,12 @@
 import * as React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { GithubFilled, InstagramOutlined, FacebookFilled, LinkedinFilled } from '@ant-design/icons';
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const ImageParentContainer = styled.div`
   width: 270px;
@@ -36,7 +42,8 @@ const Image = styled.img`
 `;
 
 const DetailsWrapper = styled.div`
-  padding-left: 30px;
+  padding: 30px;
+  margin-top: 25px;
 
   h1 {
     font-size: 30px;
@@ -44,21 +51,26 @@ const DetailsWrapper = styled.div`
     font-family: Poppins, sans-serif;
     color: rgb(41, 41, 41);
     margin-bottom: 20px;
+    text-align: center;
   }
 
   p {
     color: rgb(41, 41, 41);
     font-size: 15px;
     line-height: 2;
+    text-align: center;
   }
-
   }
 `;
 
 const SocialMediaWrapper = styled.div`
   margin: 0px;
   padding: 0px;
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 `;
 
 const GithubIcon = styled(GithubFilled)`
@@ -82,41 +94,116 @@ const FacebookIcon = styled(FacebookFilled)`
   font-size: 18px;
 `;
 
-const LinkedinIcon = styled(LinkedinFilled)`
+const LinkedInIcon = styled(LinkedinFilled)`
   list-style: none;
   position: relative;
   margin-right: 25px;
   font-size: 18px;
 `;
 
+const BackgroundText = styled.div`
+  font-size: 20vw;
+  font-weight: 700;
+  line-height: 1;
+  color: rgb(41, 41, 41);
+  opacity: 0.02;
+  position: absolute;
+  top: 40%;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  transform: translateY(-50%);
+  font-family: 'Fira Sans', cursive, sans-serif;
+`;
+
 interface InfoBannerProps {
-  image: string;
+  children?: React.Node;
+  link?: string;
 }
 
-const InfoBanner = ({ image }: InfoBannerProps) => (
-  <>
-    <ImageParentContainer>
-      <ImageWrapper>
-        <BlockContent aria-hidden="true"></BlockContent>
-        <Image sizes="(max-width: 210px) 100vw, 210px" type="image/webp" src={image} alt="profile picture" />
-      </ImageWrapper>
-    </ImageParentContainer>
-    <DetailsWrapper>
-      <h1>
-        Hi! My name is <b>Vincent</b>
-      </h1>
-      <p>
-        Breakfast procuring no end happiness allowance assurance frank. Met simplicity nor difficulty unreserved who.
-        Entreaties mr conviction dissimilar me astonished estimating cultivated.
-      </p>
-      <SocialMediaWrapper>
-        <GithubIcon />
-        <LinkedinIcon />
-        <InstagramIcon />
-        <FacebookIcon />
-      </SocialMediaWrapper>
-    </DetailsWrapper>
-  </>
+const AnchorTag = ({ children, link }: InfoBannerProps) => (
+  <a href={link} rel="noreferrer" target="_blank">
+    {children}
+  </a>
 );
+
+const InfoBanner = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      placeholderImage: file(relativePath: { eq: "personal-photo.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      allSocialMediaLinks {
+        nodes {
+          url
+          socialMediaPlatform
+        }
+      }
+      portfolioMetaData {
+        title
+        captions
+      }
+    }
+  `);
+
+  const { placeholderImage, allSocialMediaLinks, portfolioMetaData } = data;
+
+  const renderSocialMediaIcons = () =>
+    allSocialMediaLinks.nodes.map((socialData, idx) => {
+      switch (socialData.socialMediaPlatform) {
+        case 'Github':
+          return (
+            <AnchorTag key={idx} link={socialData.url} rel="noreferrer" target="_blank">
+              <GithubIcon />
+            </AnchorTag>
+          );
+        case 'LinkedIn':
+          return (
+            <AnchorTag key={idx} link={socialData.url} rel="noreferrer" target="_blank">
+              <LinkedInIcon />
+            </AnchorTag>
+          );
+        case 'Instagram':
+          return (
+            <AnchorTag key={idx} link={socialData.url} rel="noreferrer" target="_blank">
+              <InstagramIcon />
+            </AnchorTag>
+          );
+        case 'Facebook':
+          return (
+            <AnchorTag key={idx} link={socialData.url} rel="noreferrer" target="_blank">
+              <FacebookIcon />
+            </AnchorTag>
+          );
+      }
+    });
+
+  return (
+    <Wrapper>
+      <BackgroundText>WELCOME</BackgroundText>
+      <ImageParentContainer>
+        <ImageWrapper>
+          <BlockContent aria-hidden="true"></BlockContent>
+          <Image
+            sizes="(max-width: 210px) 100vw, 210px"
+            alt="profile picture"
+            type="image/webp"
+            src={placeholderImage.childImageSharp.fluid.src}
+          />
+        </ImageWrapper>
+      </ImageParentContainer>
+      <DetailsWrapper>
+        <h1>{portfolioMetaData.title}</h1>
+        <p>{portfolioMetaData.captions}</p>
+        <SocialMediaWrapper>{renderSocialMediaIcons()}</SocialMediaWrapper>
+      </DetailsWrapper>
+    </Wrapper>
+  );
+};
 
 export default InfoBanner;
