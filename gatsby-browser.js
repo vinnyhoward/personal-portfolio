@@ -5,10 +5,8 @@
  */
 
 // You can delete this file if you're not using it\
-import React from 'react'
-import {ThemeProvider} from 'styled-components';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import Theme from './src/shared/style/theme';
 
-export const wrapRootElement = ({ element }) => (
-    <ThemeProvider theme={Theme}>{element}</ThemeProvider>
-)
+export const wrapRootElement = ({ element }) => <ThemeProvider theme={Theme}>{element}</ThemeProvider>;
