@@ -183,6 +183,11 @@ const InfoBanner = () => {
       }
     });
 
+  const boldString = (str, substr) => {
+    const strRegExp = new RegExp(substr, 'g');
+    return str.replace(strRegExp, <b>substr</b>);
+  };
+
   return (
     <Wrapper>
       <BackgroundText>WELCOME</BackgroundText>
