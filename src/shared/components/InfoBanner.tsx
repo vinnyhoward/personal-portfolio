@@ -64,28 +64,28 @@ const SocialMediaWrapper = styled.div`
 const GithubIcon = styled(GithubFilled)`
   list-style: none;
   position: relative;
-  margin-right: 20px;
+  margin-right: 25px;
   font-size: 18px;
 `;
 
 const InstagramIcon = styled(InstagramOutlined)`
   list-style: none;
   position: relative;
-  margin-right: 20px;
+  margin-right: 25px;
   font-size: 18px;
 `;
 
 const FacebookIcon = styled(FacebookFilled)`
   list-style: none;
   position: relative;
-  margin-right: 20px;
+  margin-right: 25px;
   font-size: 18px;
 `;
 
 const LinkedinIcon = styled(LinkedinFilled)`
   list-style: none;
   position: relative;
-  margin-right: 20px;
+  margin-right: 25px;
   font-size: 18px;
 `;
 
