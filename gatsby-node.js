@@ -9,7 +9,7 @@
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
   const portfolioMetaData = {
   title: `Hi! My name is Vincent`,
-  captions: `Breakfast procuring no end happiness allowance assurance frank. Met simplicity nor difficulty unreserved who. Entreaties mr conviction dissimilar me astonished estimating cultivated.`,
+  captions: `I am a full-stack developer with a background in design (UI/UX, branding), with a deep passion for JavaScript, particularly in the React and Node ecosystems. While the web development field keeps on changing and developing, the landscape provides the challenge and fun I crave in creating, solving problems, and learning new technologies.`,
   }
 
   const socialMediaLinks = [

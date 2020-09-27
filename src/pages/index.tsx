@@ -1,11 +1,15 @@
 import React from 'react';
-import BannerLayout from '../shared/components/BannerLayout';
-import InfoBanner from '../shared/components/InfoBanner';
+import BannerLayout from '../components/BannerLayout';
+import InfoBanner from '../components/InfoBanner';
+import PortfolioLayout from '../components//PortfolioLayout';
 
 const App = () => (
-  <BannerLayout>
-    <InfoBanner />
-  </BannerLayout>
+  <>
+    <BannerLayout>
+      <InfoBanner />
+    </BannerLayout>
+    <PortfolioLayout>HIII</PortfolioLayout>
+  </>
 );
 
 export default App;
