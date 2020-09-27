@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 interface PortfolioLayoutProps {
-	children: React.Node;
+	children: React.ReactNode;
 }
 
 const PortfolioLayout = ({ children }: PortfolioLayoutProps) => <Container>{children}</Container>;

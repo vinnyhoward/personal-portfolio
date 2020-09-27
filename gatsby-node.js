@@ -57,6 +57,30 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
 				liveSite: 'https://fake-gymshark-clone-frontend.herokuapp.com/#/',
 			},
 		},
+		{
+			picture: 'https://image.ibb.co/fzF2H0/impav.jpg',
+			title: 'Impav Foundations (Mock Charity Dapp)',
+			description:
+				'Personal project aimed at educating and familiarizing myself with the Solidity language for smart contracts for the Ethereum blockchain, while interacting with the data on the front-end using ReactJS',
+			projectInformation: 'TBA',
+			repoData: {
+				repoUrl: 'https://github.com/vinnyhoward/charity-react-solidity',
+				isPrivateRepo: false,
+				liveSite: 'https://trusting-mahavira-8582f4.netlify.app/',
+			},
+		},
+		{
+			picture: 'https://image.ibb.co/b0hMAL/latch.jpg',
+			title: 'Latch',
+			description:
+				'Designed and implemented a static landing page for a start-up called Latch, which enables users to track their transactions and stolen funds to the original address in a presentable and user friendly way',
+			projectInformation: 'TBA',
+			repoData: {
+				repoUrl: 'https://gitlab.com/latched/latch-landing-page',
+				isPrivateRepo: true,
+				liveSite: 'https://festive-spence-a68a71.netlify.app',
+			},
+		},
 	];
 
 	portfolioData.forEach((data) => {

@@ -34,6 +34,7 @@ const App = () => {
 	const portfolioMetaData = data.allPortfolioData.nodes || [];
 
 	const renderPortfolioData = () => {
+		console.log('portfolioMetaData:', portfolioMetaData);
 		return portfolioMetaData.map(
 			({ id, picture, title, description, projectInformation, repoData }: PortfolioCardProps) => (
 				<PortfolioCard key={id} {...{ id, picture, title, description, projectInformation, repoData }} />

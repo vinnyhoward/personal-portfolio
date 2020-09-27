@@ -119,8 +119,14 @@ const BackgroundText = styled.div`
 `;
 
 interface InfoBannerProps {
-	children?: React.Node;
+	children?: React.ReactNode;
 	link?: string;
+}
+
+interface SocialMediaLinksProps {
+	socialMediaPlatform: string;
+	url: string;
+	id: number;
 }
 
 const AnchorTag = ({ children, link }: InfoBannerProps) => (
@@ -155,39 +161,39 @@ const InfoBanner = () => {
 	const { placeholderImage, allSocialMediaLinks, portfolioMetaData } = data;
 
 	const renderSocialMediaIcons = () =>
-		allSocialMediaLinks.nodes.map((socialData, idx) => {
-			switch (socialData.socialMediaPlatform) {
+		allSocialMediaLinks.nodes.map(({ socialMediaPlatform, url, id }: SocialMediaLinksProps) => {
+			switch (socialMediaPlatform) {
 				case 'Github':
 					return (
-						<AnchorTag key={idx} link={socialData.url} rel="noreferrer" target="_blank">
+						<AnchorTag key={id} link={url}>
 							<GithubIcon />
 						</AnchorTag>
 					);
 				case 'LinkedIn':
 					return (
-						<AnchorTag key={idx} link={socialData.url} rel="noreferrer" target="_blank">
+						<AnchorTag key={id} link={url}>
 							<LinkedInIcon />
 						</AnchorTag>
 					);
 				case 'Instagram':
 					return (
-						<AnchorTag key={idx} link={socialData.url} rel="noreferrer" target="_blank">
+						<AnchorTag key={id} link={url}>
 							<InstagramIcon />
 						</AnchorTag>
 					);
 				case 'Facebook':
 					return (
-						<AnchorTag key={idx} link={socialData.url} rel="noreferrer" target="_blank">
+						<AnchorTag key={id} link={url}>
 							<FacebookIcon />
 						</AnchorTag>
 					);
 			}
 		});
 
-	const boldString = (str, substr) => {
-		const strRegExp = new RegExp(substr, 'g');
-		return str.replace(strRegExp, <b>substr</b>);
-	};
+	// const boldString = (str, substr) => {
+	// 	const strRegExp = new RegExp(substr, 'g');
+	// 	return str.replace(strRegExp, <b>substr</b>);
+	// };
 
 	return (
 		<Wrapper>
@@ -198,7 +204,6 @@ const InfoBanner = () => {
 					<Image
 						sizes="(max-width: 210px) 100vw, 210px"
 						alt="profile picture"
-						type="image/webp"
 						src={placeholderImage.childImageSharp.fluid.src}
 					/>
 				</ImageWrapper>

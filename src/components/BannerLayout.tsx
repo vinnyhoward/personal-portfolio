@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 interface BannerLayoutProps {
-	children: React.Node;
+	children: React.ReactNode;
 }
 
 const BannerLayout = ({ children }: BannerLayoutProps) => {
