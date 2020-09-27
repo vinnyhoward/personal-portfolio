@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "personal-portfolio",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A simple portfolio site to show off my work",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Vincent Howard <vincenguyenhoward@gmail.com>",
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "add": "^2.0.6",
